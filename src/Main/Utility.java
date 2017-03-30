@@ -8,6 +8,7 @@ package Main;
 import Domain.triple;
 import java.util.*;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 
 
 /**
@@ -24,7 +25,23 @@ public class Utility {
     static String right_dir = "right";
    
     List<triple>  TripleList= new ArrayList<triple>();
-    triple t = new triple(1,"s",2);
-   TripleList.add(t);
+  
+    public List<triple> populateTriple()
+    {
+        TripleList.add(new triple(small_rad, left_dir, near_dist));
+        TripleList.add(new triple(small_rad, right_dir, near_dist));
+        TripleList.add(new triple(small_rad, left_dir, far_dist));
+        TripleList.add(new triple(small_rad, right_dir, far_dist));
+        TripleList.add(new triple(med_rad, left_dir, near_dist));
+        TripleList.add(new triple(med_rad, right_dir, near_dist));
+        TripleList.add(new triple(med_rad, left_dir, far_dist));
+        TripleList.add(new triple(med_rad, right_dir, far_dist));
+        TripleList.add(new triple(lar_rad, left_dir, near_dist));
+        TripleList.add(new triple(lar_rad, right_dir, near_dist));
+        TripleList.add(new triple(lar_rad, left_dir, far_dist));
+        TripleList.add(new triple(lar_rad, right_dir, far_dist));
+        
+        return TripleList;
+    }
     
 }
