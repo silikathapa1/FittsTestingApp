@@ -15,6 +15,11 @@ public class triple {
     private String direction;
     private int distance;
 
+    public triple(int S, String dir, int dis){
+        this.size =S;
+        this.direction=dir;
+        this.distance = dis;        
+    }
     public int getSize() {
         return size;
     }
