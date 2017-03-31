@@ -45,6 +45,7 @@ public class TestScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 153));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         Cursor te = new Cursor(Cursor.CROSSHAIR_CURSOR);
@@ -96,7 +97,7 @@ public class TestScreen extends javax.swing.JFrame {
          //set random value and repaint() to call this again
          //L ->y-384, x-683| near=100, far=200 : 683-100
         g.setColor(Color.red);
-        Utility.drawCenteredCircle(g, 683, 384, 60);
+        Utility.drawCenteredCircle(g, 783, 384, 60);
     }
 
 

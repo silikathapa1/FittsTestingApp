@@ -109,9 +109,10 @@ public class Main extends javax.swing.JFrame {
 
     private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
         this.setVisible(false);
-        TestScreen jframe = new TestScreen();
-        jframe.setVisible(true);
-        jframe.setExtendedState(MAXIMIZED_BOTH);            
+        TestScreen testScreen = new TestScreen();
+        testScreen.setExtendedState(MAXIMIZED_BOTH);
+	testScreen.setVisible(true);
+               
     }//GEN-LAST:event_getStartedActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
