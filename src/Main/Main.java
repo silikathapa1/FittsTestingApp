@@ -112,7 +112,6 @@ public class Main extends javax.swing.JFrame {
         TestScreen jframe = new TestScreen();
         jframe.setVisible(true);
         jframe.setExtendedState(MAXIMIZED_BOTH);            
-        
     }//GEN-LAST:event_getStartedActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -149,7 +148,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               Main jframe = new Main();
+                Main jframe = new Main();
                 jframe.setVisible(true);
                 jframe.setExtendedState(jframe.MAXIMIZED_BOTH);
              }

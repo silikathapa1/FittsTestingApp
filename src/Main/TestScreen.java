@@ -87,18 +87,16 @@ public class TestScreen extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            }
-        });
+        TestScreen testScreen = new TestScreen();
+        testScreen.setExtendedState(MAXIMIZED_BOTH);
+	testScreen.setVisible(true);
     }
     
-     public void paint(Graphics g) {
+    public void paint(Graphics g) {
          //set random value and repaint() to call this again
-         
          //L ->y-384, x-683| near=100, far=200 : 683-100
-         
-        Utility.drawCenteredCircle(g, 200, 200, 20);
+        g.setColor(Color.red);
+        Utility.drawCenteredCircle(g, 683, 384, 60);
     }
 
 
