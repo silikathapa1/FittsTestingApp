@@ -9,16 +9,16 @@ package Domain;
  *
  * @author Silika
  */
-public class triple {
+public class Triple {
 
     private int size;
     private String direction;
     private int distance;
 
-    public triple(int S, String dir, int dis){
-        this.size =S;
-        this.direction=dir;
-        this.distance = dis;        
+    public Triple(int size, String direction, int distance){
+        this.size =size;
+        this.direction=direction;
+        this.distance = distance;        
     }
     public int getSize() {
         return size;
@@ -43,5 +43,12 @@ public class triple {
     public void setDistance(int distance) {
         this.distance = distance;
     }
+
+    @Override
+    public String toString() {
+        return "Triple{" + "size=" + size + ", direction=" + direction + ", distance=" + distance + '}';
+    }
+    
+    
 
 }

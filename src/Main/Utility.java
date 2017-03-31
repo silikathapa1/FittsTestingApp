@@ -5,21 +5,17 @@
  */
 package Main;
 
-import Domain.triple;
+import Domain.Triple;
 import java.util.*;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import  java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 /**
  * * @author Silika
  */
 public class Utility {
-    
-    
     static int small_rad = 16;
     static int med_rad = 32;
     static int lar_rad= 64;
@@ -27,33 +23,34 @@ public class Utility {
     static int far_dist= 512;
     static String left_dir="left";
     static String right_dir = "right";
-   
-    List<triple>  TripleList= new ArrayList<triple>();
   
-    public List<triple> populateTriple()
+    public static List<Triple> populateTriple()
     {
-        TripleList.add(new triple(small_rad, left_dir, near_dist));
-        TripleList.add(new triple(small_rad, right_dir, near_dist));
-        TripleList.add(new triple(small_rad, left_dir, far_dist));
-        TripleList.add(new triple(small_rad, right_dir, far_dist));
-        TripleList.add(new triple(med_rad, left_dir, near_dist));
-        TripleList.add(new triple(med_rad, right_dir, near_dist));
-        TripleList.add(new triple(med_rad, left_dir, far_dist));
-        TripleList.add(new triple(med_rad, right_dir, far_dist));
-        TripleList.add(new triple(lar_rad, left_dir, near_dist));
-        TripleList.add(new triple(lar_rad, right_dir, near_dist));
-        TripleList.add(new triple(lar_rad, left_dir, far_dist));
-        TripleList.add(new triple(lar_rad, right_dir, far_dist));
+        List<Triple> tripleList= new ArrayList<>();
+        tripleList.add(new Triple(small_rad, left_dir, near_dist));
+        tripleList.add(new Triple(small_rad, right_dir, near_dist));
+        tripleList.add(new Triple(small_rad, left_dir, far_dist));
+        tripleList.add(new Triple(small_rad, right_dir, far_dist));
+        tripleList.add(new Triple(med_rad, left_dir, near_dist));
+        tripleList.add(new Triple(med_rad, right_dir, near_dist));
+        tripleList.add(new Triple(med_rad, left_dir, far_dist));
+        tripleList.add(new Triple(med_rad, right_dir, far_dist));
+        tripleList.add(new Triple(lar_rad, left_dir, near_dist));
+        tripleList.add(new Triple(lar_rad, right_dir, near_dist));
+        tripleList.add(new Triple(lar_rad, left_dir, far_dist));
+        tripleList.add(new Triple(lar_rad, right_dir, far_dist));
         
-        return TripleList;
+        Collections.shuffle(tripleList);
+  
+        return tripleList;
     }
     
     public void getCentre(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    int centerX = screenSize.width/2;
+         int centerX = screenSize.width/2;
         System.out.println("centre x"+centerX);
-    int centerY = screenSize.height/2;
-    System.out.println("centre x"+centerX);
+        int centerY = screenSize.height/2;
+        System.out.println("centre x"+centerX);
     }
     
     public static void drawCenteredCircle(Graphics g, int x, int y, int r) {

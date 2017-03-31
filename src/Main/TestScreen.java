@@ -6,7 +6,7 @@
 package Main;
 
 import DatabaseConnection.DatabaseConnection;
-import Domain.triple;
+import Domain.Triple;
 import Main.Utility;
 import java.awt.AWTException;
 import java.awt.Color;
@@ -16,6 +16,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +45,7 @@ public class TestScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,15 +60,28 @@ public class TestScreen extends javax.swing.JFrame {
 
         }
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(291, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(249, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,25 +98,68 @@ public class TestScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         try{
+            Robot robot = new Robot();
+            robot.mouseMove(683, 384);
+        }catch(Exception e){
+
+        }
+        called = false;
+        repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Create and display the form */
-        TestScreen testScreen = new TestScreen();
-        testScreen.setExtendedState(MAXIMIZED_BOTH);
-	testScreen.setVisible(true);
+        //TestScreen testScreen = new TestScreen();
+        //testScreen.setExtendedState(MAXIMIZED_BOTH);
+	//testScreen.setVisible(true);
     }
     
+    boolean called = false;
+    
+    public Triple getTriple(){
+        if(!called){
+            called = true;
+            List<Triple> triples = Utility.populateTriple();    
+            return triples.get(0);
+        }
+        return null;
+    }
+    
+    @Override
     public void paint(Graphics g) {
-         //set random value and repaint() to call this again
-         //L ->y-384, x-683| near=100, far=200 : 683-100
+        //L ->y-384, x-683| near=100, far=200 : 683-100
+        super.paint(g);
         g.setColor(Color.red);
-        Utility.drawCenteredCircle(g, 683, 384, 60);
+        Triple triple = getTriple();
+         
+         if(triple != null){
+                 int size = triple.getSize();
+                 String direction = triple.getDirection();
+                 int distance = triple.getDistance();
+
+                  if(direction.equals("left")){
+                      int x = 683-distance;
+                      Utility.drawCenteredCircle(g, x, 384, size);
+                  }else if(direction.equals("right")){
+                      int x = 683+distance;
+                      Utility.drawCenteredCircle(g, x, 384, size);
+                  }
+         }else{
+             int x = 683-128;
+             Utility.drawCenteredCircle(g, x, 384, 16);
+         }
+         
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
