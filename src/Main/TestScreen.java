@@ -16,6 +16,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -28,10 +31,36 @@ import javax.swing.JLabel;
  */
 public class TestScreen extends javax.swing.JFrame {
 
+    boolean called = false;
+    boolean completed = false;
+    int count = 0;
+    int mainCount = 0;
+    int x = 0;
+    List<Triple> triples = Utility.tripleList;
+    int missHits = 0;
     /**
      * Creates new form TestScreen
      */
+    
     public TestScreen() {
+        called = false;
+        completed = false;
+        count = 0;
+        mainCount = 0;
+        x = 0;
+        missHits = 0;
+        
+        addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                super.mouseClicked(me);
+                if((me.getY() >= 382 && me.getY() <= 386) && (me.getX() >= x-2 && me.getX() <= x+2)){
+                    performRePaint();
+                }else{
+                    jLabel2.setText("Miss Hits: " + ++missHits);
+                }
+            }
+        });
         initComponents();
     }
     
@@ -46,6 +75,10 @@ public class TestScreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -61,28 +94,59 @@ public class TestScreen extends javax.swing.JFrame {
 
         }
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Finish");
+        jButton1.setVisible(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel1.setText("Total Number of Trials: 0");
+
+        jLabel2.setText("Miss Hits: 0");
+
+        jLabel3.setText("Current Trial: 0");
+
+        jLabel4.setVisible(false);
+        jLabel4.setText("You have Successfully Completed !!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(246, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addComponent(jButton1)))
                 .addGap(36, 36, 36))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(28, 28, 28))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,7 +165,16 @@ public class TestScreen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         try{
+       //add to database informations
+       
+       this.setVisible(false);
+       Main jframe = new Main();
+                jframe.setVisible(true);
+                jframe.setExtendedState(jframe.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void performRePaint(){
+          try{
             Robot robot = new Robot();
             robot.mouseMove(683, 384);
         }catch(Exception e){
@@ -109,8 +182,7 @@ public class TestScreen extends javax.swing.JFrame {
         }
         called = false;
         repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
@@ -121,9 +193,7 @@ public class TestScreen extends javax.swing.JFrame {
 	//testScreen.setVisible(true);
     }
     
-    boolean called = false;
-    int count = 0;
-    int mainCount = 0;
+     
     
     public Triple getTriple(){
         if(!called){
@@ -131,11 +201,9 @@ public class TestScreen extends javax.swing.JFrame {
             ++mainCount;
             if(count >= 12){
                 count = 0;
-                List<Triple> triples = Utility.tripleList; 
                 Collections.shuffle(triples);
                 return triples.get(count++);
-            }else{
-                List<Triple> triples = Utility.tripleList;   
+            }else{  
                 return triples.get(count++);
             }
         }
@@ -148,28 +216,53 @@ public class TestScreen extends javax.swing.JFrame {
         super.paint(g);
         g.setColor(Color.red);
         Triple triple = getTriple();
-        if(triple != null){
+        if(triple != null && !completed){
                  int size = triple.getSize();
                  String direction = triple.getDirection();
                  int distance = triple.getDistance();
 
                   if(direction.equals("left")){
-                      int x = 683-distance;
+                      x = 683-distance;
                       Utility.drawCenteredCircle(g, x, 384, size);
                   }else if(direction.equals("right")){
-                      int x = 683+distance;
+                      x = 683+distance;
                       Utility.drawCenteredCircle(g, x, 384, size);
                   }
          }else{
-             int x = 683-128;
-             Utility.drawCenteredCircle(g, x, 384, 16);
+             if(!completed){
+                 x = 683-128;
+                Utility.drawCenteredCircle(g, x, 384, 16);
+             }
          }
+        
+        jLabel1.setText("Total Number of Trials: " + mainCount);
+        jLabel3.setText("Current Trail: " + count);
+        
+        if(mainCount >= 12){
+            completed = true;
+        }
+        
+        //this value should be one greater than previous call where completed true is set
+        if(mainCount >= 13){
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setText("You have successfully completed your " + (mainCount - 1) + " trials " + missHits 
+                    + " with total miss hits.");
+            jLabel4.setVisible(true);
+            jButton1.setVisible(true);
+        }
       
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
