@@ -122,12 +122,22 @@ public class TestScreen extends javax.swing.JFrame {
     }
     
     boolean called = false;
+    int count = 0;
+    int mainCount = 0;
     
     public Triple getTriple(){
         if(!called){
             called = true;
-            List<Triple> triples = Utility.populateTriple();    
-            return triples.get(0);
+            ++mainCount;
+            if(count >= 12){
+                count = 0;
+                List<Triple> triples = Utility.tripleList; 
+                Collections.shuffle(triples);
+                return triples.get(count++);
+            }else{
+                List<Triple> triples = Utility.tripleList;   
+                return triples.get(count++);
+            }
         }
         return null;
     }
@@ -138,8 +148,7 @@ public class TestScreen extends javax.swing.JFrame {
         super.paint(g);
         g.setColor(Color.red);
         Triple triple = getTriple();
-         
-         if(triple != null){
+        if(triple != null){
                  int size = triple.getSize();
                  String direction = triple.getDirection();
                  int distance = triple.getDistance();

@@ -109,7 +109,7 @@ public class Main extends javax.swing.JFrame {
 
     private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
         this.setVisible(false);
-         TestScreen testScreen = new TestScreen();
+        TestScreen testScreen = new TestScreen();
         testScreen.setExtendedState(MAXIMIZED_BOTH);
 	testScreen.setVisible(true);     
     }//GEN-LAST:event_getStartedActionPerformed

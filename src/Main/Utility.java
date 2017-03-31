@@ -23,10 +23,10 @@ public class Utility {
     static int far_dist= 512;
     static String left_dir="left";
     static String right_dir = "right";
-  
-    public static List<Triple> populateTriple()
-    {
-        List<Triple> tripleList= new ArrayList<>();
+    
+    public static final List<Triple> tripleList = new ArrayList<>();
+    
+    static {
         tripleList.add(new Triple(small_rad, left_dir, near_dist));
         tripleList.add(new Triple(small_rad, right_dir, near_dist));
         tripleList.add(new Triple(small_rad, left_dir, far_dist));
@@ -39,11 +39,9 @@ public class Utility {
         tripleList.add(new Triple(lar_rad, right_dir, near_dist));
         tripleList.add(new Triple(lar_rad, left_dir, far_dist));
         tripleList.add(new Triple(lar_rad, right_dir, far_dist));
-        
-        Collections.shuffle(tripleList);
-  
-        return tripleList;
     }
+    
+  
     
     public void getCentre(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
