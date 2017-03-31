@@ -5,6 +5,7 @@
  */
 package Main;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -110,7 +111,8 @@ public class Main extends javax.swing.JFrame {
         this.setVisible(false);
         TestScreen jframe = new TestScreen();
         jframe.setVisible(true);
-        jframe.setExtendedState(MAXIMIZED_BOTH); 
+        jframe.setExtendedState(MAXIMIZED_BOTH);            
+        
     }//GEN-LAST:event_getStartedActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

@@ -9,12 +9,14 @@ import Domain.triple;
 import java.util.*;
 import java.util.ArrayList;
 import static java.util.Collections.list;
-
+import  java.awt.Toolkit;
+import java.awt.Dimension;
 
 /**
  * * @author Silika
  */
 public class Utility {
+    
     
     static int small_rad = 16;
     static int med_rad = 32;
@@ -42,6 +44,14 @@ public class Utility {
         TripleList.add(new triple(lar_rad, right_dir, far_dist));
         
         return TripleList;
+    }
+    
+    public void getCentre(){
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int centerX = screenSize.width/2;
+        System.out.println("centre x"+centerX);
+    int centerY = screenSize.height/2;
+    System.out.println("centre x"+centerX);
     }
     
 }
