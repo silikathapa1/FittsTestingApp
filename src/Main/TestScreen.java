@@ -48,6 +48,7 @@ public class TestScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 153));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         Cursor te = new Cursor(Cursor.CROSSHAIR_CURSOR);
@@ -154,7 +155,7 @@ public class TestScreen extends javax.swing.JFrame {
              int x = 683-128;
              Utility.drawCenteredCircle(g, x, 384, 16);
          }
-         
+      
     }
 
 
