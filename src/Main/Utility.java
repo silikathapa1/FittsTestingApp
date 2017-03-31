@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import static java.util.Collections.list;
 import  java.awt.Toolkit;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * * @author Silika
@@ -52,6 +54,12 @@ public class Utility {
         System.out.println("centre x"+centerX);
     int centerY = screenSize.height/2;
     System.out.println("centre x"+centerX);
+    }
+    
+    public static void drawCenteredCircle(Graphics g, int x, int y, int r) {
+        x = x-(r/2);
+        y = y-(r/2);
+        g.fillOval(x,y,r,r);
     }
     
 }
