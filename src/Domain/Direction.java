@@ -5,17 +5,6 @@
  */
 package Domain;
 
-
-public enum Distance {
-    near(128), far(512);
-
-    private final int numVal;
-
-    Distance(int numVal) {
-        this.numVal = numVal;
-    }
-
-    public int getNumVal() {
-        return numVal;
-    }
+public enum Direction {
+    Left, Right
 }

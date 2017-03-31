@@ -5,22 +5,16 @@
  */
 package Domain;
 
-public class Size {
-    private int small = 16;
-    private int medium = 32;
-    private int large = 64;
+public enum Size {
+    small(16), medium(32), large(64);
 
-    public int getSmall() {
-        return small;
+    private final int numVal;
+
+    Size(int numVal) {
+        this.numVal = numVal;
     }
 
-    public int getMedium() {
-        return medium;
+    public int getNumVal() {
+        return numVal;
     }
-
-    public int getLarge() {
-        return large;
-    }
-    
-    
 }
