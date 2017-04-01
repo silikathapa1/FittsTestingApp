@@ -40,7 +40,10 @@ public class TestScreen extends javax.swing.JFrame {
     int count = 0;
     int mainCount = 0;
     int x = 0;
+    int Xc = Utility.getCentre().x;     // centre of the screen x-coordinate
+    int Yc = Utility.getCentre().y;     // centre of the screen y-coordinate
     List<Triple> triples = Utility.tripleList;
+   
     int missHits = 0;
     
     int missHitsPerTrial = 0;
@@ -66,6 +69,7 @@ public class TestScreen extends javax.swing.JFrame {
         missHits = 0;
         missHitsPerTrial = 0;
         startTime = new Date().getTime();
+        
           
         addMouseListener(new MouseAdapter(){
             @Override
@@ -88,7 +92,7 @@ public class TestScreen extends javax.swing.JFrame {
 
         	//Compute the distance to target center.  This is sqrt( dx^2 + dy^2 )
                 double distX = Math.abs( (double) xaxis - x );
-                double distY = Math.abs( (double) yaxis - 384 );
+                double distY = Math.abs( (double) yaxis - Yc );
                 double dist = Math.sqrt( distX * distX + distY * distY );
                 totalDistance = totalDistance + dist;
             }
@@ -126,7 +130,7 @@ public class TestScreen extends javax.swing.JFrame {
 
         try{
             Robot robot = new Robot();
-            robot.mouseMove(683, 384);
+            robot.mouseMove(Xc, Yc);
         }catch(Exception e){
 
         }
@@ -225,7 +229,7 @@ public class TestScreen extends javax.swing.JFrame {
                     
           try{
             Robot robot = new Robot();
-            robot.mouseMove(683, 384);
+            robot.mouseMove(Xc, Yc);
         }catch(Exception e){
 
         }
@@ -261,7 +265,7 @@ public class TestScreen extends javax.swing.JFrame {
     
     @Override
     public void paint(Graphics g) {
-        //L ->y-384, x-683| near=100, far=200 : 683-100
+        //L ->y-Yc, x-Xc| near=100, far=200 : Xc-100
         super.paint(g);
         g.setColor(Color.red);
         Triple triple = getTriple();
@@ -271,16 +275,16 @@ public class TestScreen extends javax.swing.JFrame {
                  int distance = triple.getDistance();
 
                   if(direction.equals("left")){
-                      x = 683-distance;
-                      Utility.drawCenteredCircle(g, x, 384, size);
+                      x = Xc-distance;
+                      Utility.drawCenteredCircle(g, x, Yc, size);
                   }else if(direction.equals("right")){
-                      x = 683+distance;
-                      Utility.drawCenteredCircle(g, x, 384, size);
+                      x = Xc+distance;
+                      Utility.drawCenteredCircle(g, x, Yc, size);
                   }
          }else{
              if(!completed){
-                 x = 683-128;
-                Utility.drawCenteredCircle(g, x, 384, 16);
+                 x = Xc-128;
+                Utility.drawCenteredCircle(g, x, Yc, 16);
              }
          }
         

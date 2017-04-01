@@ -43,7 +43,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Cursor te = new Cursor(Cursor.CROSSHAIR_CURSOR);&#xa;jPanel1.setCursor(te);&#xa;&#xa;try{&#xa;Robot robot = new Robot();&#xa;robot.mouseMove(683, 384);&#xa;}catch(Exception e){&#xa;&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Cursor te = new Cursor(Cursor.CROSSHAIR_CURSOR);&#xa;jPanel1.setCursor(te);&#xa;&#xa;try{&#xa;Robot robot = new Robot();&#xa;robot.mouseMove(Xc, Yc);&#xa;}catch(Exception e){&#xa;&#xa;}"/>
       </AuxValues>
 
       <Layout>
