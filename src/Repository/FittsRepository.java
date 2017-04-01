@@ -50,10 +50,9 @@ public class FittsRepository {
     
     public static long insertToTrialsTable(String userName, int number_of_trials, int number_of_clicks, long time, int distanceTravelled){
         try {
-            
-            Connection dbConnection = DatabaseConnection.dbConnection;
-            
-            String insertTableSQL = "INSERT INTO trails_table"
+            //get db connection 
+            Connection dbConnection = DatabaseConnection.getConnection();
+             String insertTableSQL = "INSERT INTO trails_table"
                     + "(username, trials, clicks, time, distance) VALUES (?,?,?,?,?)";
             
             PreparedStatement preparedStatement = dbConnection.prepareStatement(insertTableSQL,
@@ -73,6 +72,8 @@ public class FittsRepository {
             }
         } catch (SQLException ex) {
             Logger.getLogger(FittsRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException e){
+            System.out.println("Null pointer exception");
         }
         return 0;
     }   
