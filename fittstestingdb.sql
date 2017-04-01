@@ -36,6 +36,16 @@ CREATE TABLE `details_table` (
   `Status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `trails_table` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `username` varchar(55) NOT NULL,
+  `trials` int(11) NOT NULL,
+  `clicks` int(11) NOT NULL,
+  `time` bigint(20) NOT NULL,
+  `distance` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 --
 -- Indexes for dumped tables
 --

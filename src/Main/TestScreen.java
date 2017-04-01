@@ -8,6 +8,7 @@ package Main;
 import DatabaseConnection.DatabaseConnection;
 import Domain.Triple;
 import Main.Utility;
+import Repository.FittsRepository;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -19,7 +20,10 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.sql.Time;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -38,6 +42,17 @@ public class TestScreen extends javax.swing.JFrame {
     int x = 0;
     List<Triple> triples = Utility.tripleList;
     int missHits = 0;
+    
+    int missHitsPerTrial = 0;
+    
+    double totalDistance = 0;
+    Time totalTimeTaken;
+    
+    long startTime;
+    
+    String name;
+    
+    
     /**
      * Creates new form TestScreen
      */
@@ -49,21 +64,43 @@ public class TestScreen extends javax.swing.JFrame {
         mainCount = 0;
         x = 0;
         missHits = 0;
-        
+        missHitsPerTrial = 0;
+        startTime = new Date().getTime();
+          
         addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent me) {
                 super.mouseClicked(me);
-                if((me.getY() >= 382 && me.getY() <= 386) && (me.getX() >= x-2 && me.getX() <= x+2)){
+                if((me.getY() >= 380 && me.getY() <= 390) && (me.getX() >= x-7 && me.getX() <= x+7)){
                     performRePaint();
                 }else{
+                    ++missHitsPerTrial;
                     jLabel2.setText("Miss Hits: " + ++missHits);
                 }
             }
         });
+        
+        addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e){
+                int xaxis = e.getX();
+                int yaxis = e.getY();
+
+        	//Compute the distance to target center.  This is sqrt( dx^2 + dy^2 )
+                double distX = Math.abs( (double) xaxis - x );
+                double distY = Math.abs( (double) yaxis - 384 );
+                double dist = Math.sqrt( distX * distX + distY * distY );
+                totalDistance = totalDistance + dist;
+            }
+        }
+        );
         initComponents();
     }
     
+    public TestScreen(String name){
+        this();
+        this.name = name;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,6 +211,18 @@ public class TestScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void performRePaint(){
+        System.out.println("Total Distance: " + totalDistance);
+        long timeNow = new Date().getTime();
+        long timeDiff = timeNow - startTime;
+        totalTimeTaken = new Time(timeDiff);
+        System.out.println("Time Taken: " + totalTimeTaken.getTime());
+        
+        FittsRepository.insertToTrialsTable(name, mainCount, missHitsPerTrial, totalTimeTaken.getTime(),(int) totalDistance);
+        
+        missHitsPerTrial = 0;
+        totalDistance = 0;
+        startTime = new Date().getTime();
+                    
           try{
             Robot robot = new Robot();
             robot.mouseMove(683, 384);
@@ -247,8 +296,8 @@ public class TestScreen extends javax.swing.JFrame {
             jLabel1.setVisible(false);
             jLabel2.setVisible(false);
             jLabel3.setVisible(false);
-            jLabel4.setText("You have successfully completed your " + (mainCount - 1) + " trials " + missHits 
-                    + " with total miss hits.");
+            jLabel4.setText("You have successfully completed your " + (mainCount - 1) + " trials with " + missHits 
+                    + " total miss hits.");
             jLabel4.setVisible(true);
             jButton1.setVisible(true);
         }

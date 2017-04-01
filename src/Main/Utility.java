@@ -16,28 +16,28 @@ import java.awt.Graphics;
  * * @author Silika
  */
 public class Utility {
-    static int small_rad = 16;
-    static int med_rad = 32;
-    static int lar_rad= 64;
-    static int near_dist = 128;
-    static int far_dist= 512;
-    static String left_dir="left";
-    static String right_dir = "right";
+    final static int small_rad = 16;
+    final static int med_rad = 32;
+    final static int lar_rad= 64;
+    final static int near_dist = 128;
+    final static int far_dist= 512;
+    final static String left_dir="left";
+    final static String right_dir = "right";
     
     public static final List<Triple> tripleList = new ArrayList<>();
     
     static {
         tripleList.add(new Triple(small_rad, left_dir, near_dist));
-        tripleList.add(new Triple(small_rad, right_dir, near_dist));
-        tripleList.add(new Triple(small_rad, left_dir, far_dist));
+        tripleList.add(new Triple(lar_rad, left_dir, far_dist));
         tripleList.add(new Triple(small_rad, right_dir, far_dist));
         tripleList.add(new Triple(med_rad, left_dir, near_dist));
+        tripleList.add(new Triple(small_rad, right_dir, near_dist));
+        tripleList.add(new Triple(lar_rad, right_dir, near_dist));
         tripleList.add(new Triple(med_rad, right_dir, near_dist));
-        tripleList.add(new Triple(med_rad, left_dir, far_dist));
         tripleList.add(new Triple(med_rad, right_dir, far_dist));
         tripleList.add(new Triple(lar_rad, left_dir, near_dist));
-        tripleList.add(new Triple(lar_rad, right_dir, near_dist));
-        tripleList.add(new Triple(lar_rad, left_dir, far_dist));
+        tripleList.add(new Triple(small_rad, left_dir, far_dist));
+        tripleList.add(new Triple(med_rad, left_dir, far_dist));
         tripleList.add(new Triple(lar_rad, right_dir, far_dist));
     }
     

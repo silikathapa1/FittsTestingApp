@@ -8,17 +8,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseConnection {
-
-    public Connection connect() {
-        Connection con = null;
+    
+    private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/fittstestingdb";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "mysql";
+        
+           
+    public static Connection dbConnection = null;
+ 
+    static{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/fittstestingdb", "root", "");
-        } catch (Exception ex) {
-            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return con;
+                Class.forName(DB_DRIVER);
+                dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER,
+					DB_PASSWORD);
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
     }
 
 }

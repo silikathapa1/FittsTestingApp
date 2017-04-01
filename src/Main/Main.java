@@ -108,8 +108,13 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
+       String value = jTextField1.getText();
+       if(value.isEmpty() || value.equals("")){
+           return;
+       }
+       
         this.setVisible(false);
-        TestScreen testScreen = new TestScreen();
+        TestScreen testScreen = new TestScreen(value);
         testScreen.setExtendedState(MAXIMIZED_BOTH);
 	testScreen.setVisible(true);     
     }//GEN-LAST:event_getStartedActionPerformed
