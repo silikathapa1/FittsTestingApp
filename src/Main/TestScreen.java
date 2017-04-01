@@ -238,12 +238,12 @@ public class TestScreen extends javax.swing.JFrame {
         jLabel1.setText("Total Number of Trials: " + mainCount);
         jLabel3.setText("Current Trail: " + count);
         
-        if(mainCount >= 12){
+        if(mainCount >= 120){
             completed = true;
         }
         
         //this value should be one greater than previous call where completed true is set
-        if(mainCount >= 13){
+        if(mainCount >= 120){
             jLabel1.setVisible(false);
             jLabel2.setVisible(false);
             jLabel3.setVisible(false);
