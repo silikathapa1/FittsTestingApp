@@ -27,18 +27,18 @@ public class Utility {
     public static final List<Triple> tripleList = new ArrayList<>();
     
     static {
-        tripleList.add(new Triple(small_rad, left_dir, near_dist));
-        tripleList.add(new Triple(lar_rad, left_dir, far_dist));
-        tripleList.add(new Triple(small_rad, right_dir, far_dist));
-        tripleList.add(new Triple(med_rad, left_dir, near_dist));
+        tripleList.add(new Triple(lar_rad, right_dir, far_dist));
+        tripleList.add(new Triple(med_rad, right_dir, near_dist));
         tripleList.add(new Triple(small_rad, right_dir, near_dist));
         tripleList.add(new Triple(lar_rad, right_dir, near_dist));
-        tripleList.add(new Triple(med_rad, right_dir, near_dist));
-        tripleList.add(new Triple(med_rad, right_dir, far_dist));
-        tripleList.add(new Triple(lar_rad, left_dir, near_dist));
-        tripleList.add(new Triple(small_rad, left_dir, far_dist));
         tripleList.add(new Triple(med_rad, left_dir, far_dist));
-        tripleList.add(new Triple(lar_rad, right_dir, far_dist));
+        tripleList.add(new Triple(small_rad, right_dir, far_dist));
+        tripleList.add(new Triple(med_rad, left_dir, near_dist));     
+        tripleList.add(new Triple(small_rad, left_dir, far_dist));
+        tripleList.add(new Triple(lar_rad, left_dir, near_dist));
+        tripleList.add(new Triple(med_rad, right_dir, far_dist));
+        tripleList.add(new Triple(lar_rad, left_dir, far_dist));
+        tripleList.add(new Triple(small_rad, left_dir, near_dist));
     }
     
   
