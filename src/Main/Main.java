@@ -61,9 +61,9 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 175));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        getStarted.setBackground(new java.awt.Color(102, 102, 102));
-        getStarted.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        getStarted.setForeground(new java.awt.Color(0, 0, 153));
+        getStarted.setBackground(new java.awt.Color(51, 0, 255));
+        getStarted.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
+        getStarted.setForeground(new java.awt.Color(255, 255, 255));
         getStarted.setText("GET STARTED");
         getStarted.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getStarted.setMargin(new java.awt.Insets(3, 8, 3, 8));
@@ -83,8 +83,9 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 232, 23, 10);
         jPanel1.add(getStarted, gridBagConstraints);
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Enter Username: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
