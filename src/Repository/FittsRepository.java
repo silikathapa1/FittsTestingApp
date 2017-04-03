@@ -48,12 +48,12 @@ public class FittsRepository {
         return 0;
     }
     
-    public static long insertToTrialsTable(String userName, int number_of_trials, int number_of_clicks, long time, int distanceTravelled){
+    public static long insertToTrialsTable(String userName, int number_of_trials, int number_of_clicks, long time, int distanceTravelled, int circleWidth, int amplitude){
         try {
             //get db connection 
             Connection dbConnection = DatabaseConnection.getConnection();
              String insertTableSQL = "INSERT INTO trails_table"
-                    + "(username, trials, clicks, time, distance) VALUES (?,?,?,?,?)";
+                    + "(username, trials, clicks, time, distance, CircleWidth, Amplitude) VALUES (?,?,?,?,?,?,?)";
             
             PreparedStatement preparedStatement = dbConnection.prepareStatement(insertTableSQL,
                     Statement.RETURN_GENERATED_KEYS);
@@ -63,6 +63,8 @@ public class FittsRepository {
             preparedStatement.setInt(3, number_of_clicks);
             preparedStatement.setLong(4, time);
             preparedStatement.setInt(5, distanceTravelled);
+            preparedStatement.setInt(6, circleWidth);
+            preparedStatement.setInt(7, amplitude);
             preparedStatement.executeUpdate();
             
             

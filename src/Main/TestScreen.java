@@ -41,10 +41,11 @@ public class TestScreen extends javax.swing.JFrame {
     double totalDistance = 0;
     Time totalTimeTaken;
 
-    long startTime;
+    long startTime;             //start point of time for each trial
 
     String name;
     int diameter;  //diameter of the circle .. set as global to implement click logic for circle
+    int amplitude;   //distance to the object from centre of the screen.
 
     /**
      * Creates new form TestScreen
@@ -260,7 +261,7 @@ public class TestScreen extends javax.swing.JFrame {
         totalTimeTaken = new Time(timeDiff);
         System.out.println("Time Taken: " + totalTimeTaken.getTime());
 
-        FittsRepository.insertToTrialsTable(name, mainCount, missHitsPerTrial, totalTimeTaken.getTime(), (int) totalDistance);
+        FittsRepository.insertToTrialsTable(name, mainCount, missHitsPerTrial, totalTimeTaken.getTime(), (int) totalDistance, diameter, amplitude);
 
         missHitsPerTrial = 0;
         totalDistance = 0;
@@ -312,13 +313,13 @@ public class TestScreen extends javax.swing.JFrame {
         if (triple != null && !completed) {
             diameter = triple.getSize();
             String direction = triple.getDirection();
-            int distance = triple.getDistance();
+            amplitude = triple.getDistance();
 
             if (direction.equals("left")) {
-                x = Xc - distance;
+                x = Xc - amplitude;
                 Utility.drawCenteredCircle(g, x, Yc, diameter);
             } else if (direction.equals("right")) {
-                x = Xc + distance;
+                x = Xc + amplitude;
                 Utility.drawCenteredCircle(g, x, Yc, diameter);
             }
         } else {
