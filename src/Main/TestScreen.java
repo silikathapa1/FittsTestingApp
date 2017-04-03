@@ -57,7 +57,7 @@ public class TestScreen extends javax.swing.JFrame {
         mainCount = 0;
         x = 0;
         missHits = 0;
-        missHitsPerTrial = 0;
+//        missHitsPerTrial = 0;
         startTime = new Date().getTime();
 
         addMouseListener(new MouseAdapter() {
@@ -69,6 +69,7 @@ public class TestScreen extends javax.swing.JFrame {
                     performRePaint();
                 } else {
                     ++missHitsPerTrial;
+                     System.out.println("======"+missHitsPerTrial);
                     jLabel2.setText("Miss Hits: " + ++missHits);
                 }
             }
@@ -260,7 +261,7 @@ public class TestScreen extends javax.swing.JFrame {
         long timeDiff = timeNow - startTime;
         totalTimeTaken = new Time(timeDiff);
         System.out.println("Time Taken: " + totalTimeTaken.getTime());
-
+        System.out.println("Missed hits per trials " + missHitsPerTrial);
         FittsRepository.insertToTrialsTable(name, mainCount, missHitsPerTrial, totalTimeTaken.getTime(), (int) totalDistance, diameter, amplitude);
 
         missHitsPerTrial = 0;
