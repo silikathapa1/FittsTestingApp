@@ -38,8 +38,9 @@ public class Main extends javax.swing.JFrame {
         getStarted = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
+        InfoPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(241, 241, 250));
@@ -110,15 +111,25 @@ public class Main extends javax.swing.JFrame {
 
         MainPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 175));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+        InfoPanel.setBackground(new java.awt.Color(51, 51, 255));
+        InfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        InfoPanel.setForeground(new java.awt.Color(255, 255, 255));
+        InfoPanel.setPreferredSize(new java.awt.Dimension(500, 110));
+        InfoPanel.setLayout(null);
 
-        label1.setText("label1");
-        jPanel1.add(label1);
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Fitts’ Law is a model to predict Pointing Interactions. This experiment is conducted to determine how fast a user can point to a circle shown on the screen for different values");
+        InfoPanel.add(jLabel2);
+        jLabel2.setBounds(20, 30, 1350, 22);
 
-        MainPanel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("of index of difficulty (ID) while using a Mouse or a Trackpad.    ");
+        InfoPanel.add(jLabel4);
+        jLabel4.setBounds(16, 60, 890, 22);
+
+        MainPanel.add(InfoPanel, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(MainPanel, java.awt.BorderLayout.CENTER);
 
@@ -179,13 +190,14 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel InfoPanel;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel WelcomeLabel;
     public javax.swing.JButton getStarted;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

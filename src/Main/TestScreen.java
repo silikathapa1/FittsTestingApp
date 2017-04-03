@@ -337,15 +337,15 @@ public class TestScreen extends javax.swing.JFrame {
             }
         }
 
-        jLabel1.setText("Total Number of Trials: " + mainCount);
+        jLabel1.setText("Total Number of Trials: " + 120);
         jLabel3.setText("Current Trail: " + count);
 
-        if (mainCount >= 13) {
+        if (mainCount >= 12) {
             completed = true;
         }
 
         //this value should be one greater than previous call where completed true is set
-        if (mainCount >= 13) {
+        if (mainCount > 12) {
             InfoPanel.setVisible(false);
             jLabel1.setVisible(false);
             jLabel2.setVisible(false);
