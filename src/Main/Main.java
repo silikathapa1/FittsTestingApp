@@ -61,7 +61,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        getStarted.setBackground(new java.awt.Color(51, 0, 255));
+        getStarted.setBackground(new java.awt.Color(51, 51, 255));
         getStarted.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
         getStarted.setForeground(new java.awt.Color(255, 255, 255));
         getStarted.setText("GET STARTED");
