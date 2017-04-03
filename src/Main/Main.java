@@ -40,30 +40,35 @@ public class Main extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(241, 241, 250));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.white);
 
-        WelcomeLabel.setBackground(new java.awt.Color(204, 204, 255));
-        WelcomeLabel.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
-        WelcomeLabel.setForeground(new java.awt.Color(0, 0, 255));
+        WelcomeLabel.setBackground(new java.awt.Color(153, 0, 102));
+        WelcomeLabel.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
+        WelcomeLabel.setForeground(new java.awt.Color(0, 0, 204));
         WelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        WelcomeLabel.setText("Welcome");
+        WelcomeLabel.setText("Fitts Law Experiment App");
         WelcomeLabel.setMaximumSize(new java.awt.Dimension(43, 15));
         getContentPane().add(WelcomeLabel, java.awt.BorderLayout.PAGE_START);
 
-        MainPanel.setBackground(new java.awt.Color(204, 204, 255));
-        MainPanel.setForeground(new java.awt.Color(102, 102, 255));
+        MainPanel.setBackground(new java.awt.Color(241, 241, 250));
+        MainPanel.setForeground(new java.awt.Color(241, 241, 250));
         MainPanel.setLayout(new javax.swing.BoxLayout(MainPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 175));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        getStarted.setBackground(new java.awt.Color(102, 102, 255));
-        getStarted.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        getStarted.setForeground(new java.awt.Color(255, 255, 255));
+        getStarted.setBackground(new java.awt.Color(102, 102, 102));
+        getStarted.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
+        getStarted.setForeground(new java.awt.Color(0, 0, 153));
         getStarted.setText("GET STARTED");
+        getStarted.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getStarted.setMargin(new java.awt.Insets(3, 8, 3, 8));
+        getStarted.setMaximumSize(new java.awt.Dimension(120, 15));
+        getStarted.setMinimumSize(new java.awt.Dimension(120, 15));
         getStarted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getStartedActionPerformed(evt);
@@ -72,12 +77,14 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 65;
-        gridBagConstraints.ipady = 38;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 232, 23, 10);
         jPanel1.add(getStarted, gridBagConstraints);
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
         jLabel1.setText("Enter Username: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -86,6 +93,7 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(34, 10, 0, 0);
         jPanel1.add(jLabel1, gridBagConstraints);
 
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
