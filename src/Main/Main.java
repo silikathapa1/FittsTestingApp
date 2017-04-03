@@ -34,10 +34,12 @@ public class Main extends javax.swing.JFrame {
 
         WelcomeLabel = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         getStarted = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(241, 241, 250));
@@ -54,12 +56,9 @@ public class Main extends javax.swing.JFrame {
 
         MainPanel.setBackground(new java.awt.Color(241, 241, 250));
         MainPanel.setForeground(new java.awt.Color(241, 241, 250));
-        MainPanel.setLayout(new javax.swing.BoxLayout(MainPanel, javax.swing.BoxLayout.LINE_AXIS));
+        MainPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 175));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         getStarted.setBackground(new java.awt.Color(51, 0, 255));
         getStarted.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
@@ -81,7 +80,7 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 232, 23, 10);
-        jPanel1.add(getStarted, gridBagConstraints);
+        jPanel2.add(getStarted, gridBagConstraints);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
@@ -92,7 +91,7 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(34, 10, 0, 0);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel2.add(jLabel1, gridBagConstraints);
 
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +106,19 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 404;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(31, 10, 0, 10);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        jPanel2.add(jTextField1, gridBagConstraints);
 
-        MainPanel.add(jPanel1);
+        MainPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 175));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        label1.setText("label1");
+        jPanel1.add(label1);
+
+        MainPanel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(MainPanel, java.awt.BorderLayout.CENTER);
 
@@ -175,6 +184,8 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JButton getStarted;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
